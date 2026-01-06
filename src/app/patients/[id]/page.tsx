@@ -22,7 +22,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar";
-import { patients, treatments as initialTreatments, invoices as initialInvoices, treatmentPlans } from "@/lib/data";
+import { patients, treatments as initialTreatments, invoices as initialInvoices, treatmentPlans as initialTreatmentPlans } from "@/lib/data";
 import DentalChart from "@/components/patients/dental-chart";
 import TreatmentsList from "@/components/patients/treatments-list";
 import BillingTable from "@/components/patients/billing-table";
@@ -36,7 +36,7 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
   const patient = patients.find((p) => p.id === params.id);
   const [treatments, setTreatments] = useState<Treatment[]>(initialTreatments);
   const [invoices, setInvoices] = useState<Invoice[]>(initialInvoices);
-  const [plans, setPlans] = useState<TreatmentPlan[]>(treatmentPlans);
+  const [plans, setPlans] = useState<TreatmentPlan[]>(initialTreatmentPlans);
 
   if (!patient) {
     return (
