@@ -1,7 +1,6 @@
 "use client";
 
-import { useState }
-from "react";
+import { useState } from "react";
 import type { Patient } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import {
