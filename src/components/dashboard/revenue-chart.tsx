@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 "use client";
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
@@ -87,3 +83,5 @@ export default function RevenueChart() {
     </Card>
   );
 }
+
+    

@@ -1,10 +1,8 @@
-
 "use client";
 
 import React from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-<<<<<<< HEAD
 import { appointments, patients } from '@/lib/data';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -42,25 +40,11 @@ export default function AppointmentsCalendar() {
   const { toast } = useToast();
 
   const selectedDayAppointments = allAppointments.filter(
-=======
-import { appointments } from '@/lib/data';
-import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
-import { Badge } from '../ui/badge';
-import { PlusCircle } from 'lucide-react';
-import { Button } from '../ui/button';
-
-export default function AppointmentsCalendar() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
-
-  const selectedDayAppointments = appointments.filter(
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
     (appointment) =>
       date &&
       new Date(appointment.dateTime).toDateString() === date.toDateString()
   );
 
-<<<<<<< HEAD
   const handleAddAppointment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -143,9 +127,6 @@ export default function AppointmentsCalendar() {
 
   return (
     <>
-=======
-  return (
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
     <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
       <div className="lg:col-span-2">
         <Card>
@@ -158,11 +139,7 @@ export default function AppointmentsCalendar() {
                 locale={fr}
                 components={{
                     DayContent: ({ date }) => {
-<<<<<<< HEAD
                         const dailyAppointments = allAppointments.filter(
-=======
-                        const dailyAppointments = appointments.filter(
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
                             (appointment) => new Date(appointment.dateTime).toDateString() === date.toDateString()
                         );
                         return (
@@ -190,7 +167,6 @@ export default function AppointmentsCalendar() {
                         {selectedDayAppointments.length} rendez-vous
                     </CardDescription>
                 </div>
-<<<<<<< HEAD
                  <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
                   <DialogTrigger asChild>
                     <Button size="sm">
@@ -247,26 +223,14 @@ export default function AppointmentsCalendar() {
                     </form>
                   </DialogContent>
                 </Dialog>
-=======
-                 <Button size="sm">
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    RDV
-                </Button>
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
             </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {selectedDayAppointments.length > 0 ? (
                 selectedDayAppointments
-<<<<<<< HEAD
                   .sort((a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime())
                   .map((appointment) => (
                     <div key={appointment.id} onClick={() => handleSelectAppointment(appointment)} className="flex items-center gap-4 p-3 rounded-lg bg-muted/50 hover:bg-muted cursor-pointer transition-colors">
-=======
-                  .sort((a, b) => a.dateTime.getTime() - b.dateTime.getTime())
-                  .map((appointment) => (
-                    <div key={appointment.id} className="flex items-center gap-4 p-3 rounded-lg bg-muted/50">
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
                       <div className="grid gap-1 flex-1">
                         <p className="text-sm font-medium leading-none">
                           {appointment.patientName}
@@ -276,7 +240,7 @@ export default function AppointmentsCalendar() {
                         </p>
                       </div>
                       <Badge variant="outline" className="ml-auto font-medium text-sm">
-                        {format(appointment.dateTime, 'HH:mm', { locale: fr })}
+                        {format(new Date(appointment.dateTime), 'HH:mm', { locale: fr })}
                       </Badge>
                     </div>
                   ))
@@ -290,7 +254,6 @@ export default function AppointmentsCalendar() {
         </Card>
       </div>
     </div>
-<<<<<<< HEAD
 
     <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
@@ -328,13 +291,13 @@ export default function AppointmentsCalendar() {
                   <Label htmlFor="date-edit" className="text-right">
                     Date
                   </Label>
-                  <Input id="date-edit" name="date" type="date" defaultValue={format(selectedAppointment.dateTime, 'yyyy-MM-dd')} className="col-span-3" />
+                  <Input id="date-edit" name="date" type="date" defaultValue={format(new Date(selectedAppointment.dateTime), 'yyyy-MM-dd')} className="col-span-3" />
                 </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="time-edit" className="text-right">
                     Heure
                   </Label>
-                  <Input id="time-edit" name="time" type="time" defaultValue={format(selectedAppointment.dateTime, 'HH:mm')} className="col-span-3" />
+                  <Input id="time-edit" name="time" type="time" defaultValue={format(new Date(selectedAppointment.dateTime), 'HH:mm')} className="col-span-3" />
                 </div>
               </div>
               <DialogFooter className='justify-between'>
@@ -358,7 +321,3 @@ export default function AppointmentsCalendar() {
 }
 
     
-=======
-  );
-}
->>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
