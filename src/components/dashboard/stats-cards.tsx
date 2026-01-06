@@ -5,7 +5,7 @@ export default function StatsCards() {
   const stats = [
     {
       title: "Chiffre d'affaires (Aujourd'hui)",
-      value: "12,500 MAD",
+      value: "12,500 DH",
       icon: DollarSign,
       change: "+15.2% vs hier",
     },

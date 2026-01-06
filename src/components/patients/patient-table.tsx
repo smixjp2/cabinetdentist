@@ -124,6 +124,7 @@ export function PatientTable() {
       notes: "",
     };
     setData(prevData => [...prevData, newPatient]);
+    setIsNewPatientDialogOpen(false);
   };
 
   const table = useReactTable({
@@ -237,5 +238,3 @@ export function PatientTable() {
     </div>
   );
 }
-
-    

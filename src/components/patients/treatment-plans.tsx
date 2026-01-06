@@ -105,7 +105,7 @@ function NewPlanDialog({ onAddPlan }: { onAddPlan: TreatmentPlansProps['onAddPla
                             <Input id="title" name="title" placeholder="Ex: Plan de restauration" className="col-span-3" required />
                         </div>
                          <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="totalCost" className="text-right">Coût Total (MAD)</Label>
+                            <Label htmlFor="totalCost" className="text-right">Coût Total (DH)</Label>
                             <Input id="totalCost" name="totalCost" type="number" placeholder="Ex: 8500" className="col-span-3" required />
                         </div>
                         <div className="grid grid-cols-4 items-start gap-4">
@@ -148,11 +148,11 @@ export default function TreatmentPlans({ treatmentPlans }: { treatmentPlans: Tre
     // Header
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
-    doc.text("DentiCare Maroc", 14, 22);
+    doc.text("Ibtisasama Modern Dentistry", 14, 22);
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
     doc.text("123 Avenue des Soins, Casablanca", 14, 30);
-    doc.text("contact@denticare.ma | +212 5 22 00 11 22", 14, 35);
+    doc.text("contact@ibtisasama.ma | +212 5 22 00 11 22", 14, 35);
     
     // Devis title
     doc.setFontSize(18);
@@ -168,7 +168,7 @@ export default function TreatmentPlans({ treatmentPlans }: { treatmentPlans: Tre
     // Table
     autoTable(doc, {
         startY: 75,
-        head: [['Soin', 'Description', 'Coût (MAD)']],
+        head: [['Soin', 'Description', 'Coût (DH)']],
         body: plan.treatments.map(t => [
             t.tooth ? `Dent n°${t.tooth}` : 'Général',
             t.procedure,
@@ -183,7 +183,7 @@ export default function TreatmentPlans({ treatmentPlans }: { treatmentPlans: Tre
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.text("Coût Total:", 140, finalY + 15, { align: 'right' });
-    doc.text(`${plan.totalCost.toFixed(2)} MAD`, 200, finalY + 15, { align: 'right' });
+    doc.text(`${plan.totalCost.toFixed(2)} DH`, 200, finalY + 15, { align: 'right' });
 
     // Footer
     doc.setFontSize(10);
@@ -218,7 +218,7 @@ export default function TreatmentPlans({ treatmentPlans }: { treatmentPlans: Tre
                                 <Badge variant={statusVariant[plan.status]}>
                                     {statusText[plan.status]}
                                 </Badge>
-                                <span className="font-bold text-lg">{plan.totalCost.toFixed(2)} MAD</span>
+                                <span className="font-bold text-lg">{plan.totalCost.toFixed(2)} DH</span>
                              </div>
                         </div>
                     </AccordionTrigger>
@@ -229,7 +229,7 @@ export default function TreatmentPlans({ treatmentPlans }: { treatmentPlans: Tre
                                 {plan.treatments.map((treatment, index) => (
                                     <li key={index} className="flex justify-between">
                                         <span>{treatment.tooth ? `Dent n°${treatment.tooth}: ` : ''}{treatment.procedure}</span>
-                                        {treatment.cost > 0 && <span>{treatment.cost.toFixed(2)} MAD</span>}
+                                        {treatment.cost > 0 && <span>{treatment.cost.toFixed(2)} DH</span>}
                                     </li>
                                 ))}
                              </ul>

@@ -27,12 +27,10 @@ export default function TreatmentsList({ treatments }: TreatmentsListProps) {
             <p className="font-semibold">Notes:</p>
             <p className="text-muted-foreground">{treatment.notes}</p>
             <p className="font-semibold mt-2">Coût:</p>
-            <p className="text-muted-foreground">{treatment.cost.toFixed(2)} MAD</p>
+            <p className="text-muted-foreground">{treatment.cost.toFixed(2)} DH</p>
           </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
   )
 }
-
-    

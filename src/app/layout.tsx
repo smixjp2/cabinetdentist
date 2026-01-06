@@ -10,7 +10,7 @@ import SidebarNav from "@/components/layout/sidebar-nav";
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'DentiCare Maroc',
+  title: 'Ibtisasama Modern Dentistry',
   description: 'Gestion de cabinet dentaire au Maroc',
 };
 

@@ -65,7 +65,7 @@ function AddPaymentDialog({ invoice, onAddPayment, children }: AddPaymentDialogP
       return;
     }
     if (paymentAmount > remainingAmount) {
-      toast({ variant: 'destructive', title: 'Erreur', description: `Le paiement ne peut pas dépasser le montant restant de ${remainingAmount.toFixed(2)} MAD.` });
+      toast({ variant: 'destructive', title: 'Erreur', description: `Le paiement ne peut pas dépasser le montant restant de ${remainingAmount.toFixed(2)} DH.` });
       return;
     }
     
@@ -82,14 +82,14 @@ function AddPaymentDialog({ invoice, onAddPayment, children }: AddPaymentDialogP
         <DialogHeader>
           <DialogTitle>Enregistrer un paiement</DialogTitle>
           <DialogDescription>
-            Facture {invoice.id} - Montant total: {invoice.amount.toFixed(2)} MAD
+            Facture {invoice.id} - Montant total: {invoice.amount.toFixed(2)} DH
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
             <div className="space-y-2">
-                <p className="text-sm">Montant déjà payé: <span className="font-medium">{invoice.paidAmount.toFixed(2)} MAD</span></p>
-                <p className="text-sm">Montant restant: <span className="font-medium">{remainingAmount.toFixed(2)} MAD</span></p>
+                <p className="text-sm">Montant déjà payé: <span className="font-medium">{invoice.paidAmount.toFixed(2)} DH</span></p>
+                <p className="text-sm">Montant restant: <span className="font-medium">{remainingAmount.toFixed(2)} DH</span></p>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="amount" className="text-right">Montant</Label>
@@ -145,9 +145,9 @@ export default function BillingTable({ invoices, onAddPayment }: BillingTablePro
                 {statusText[invoice.status]}
               </Badge>
             </TableCell>
-            <TableCell className="text-right">{invoice.amount.toFixed(2)} MAD</TableCell>
-            <TableCell className="text-right text-green-600">{invoice.paidAmount.toFixed(2)} MAD</TableCell>
-            <TableCell className="text-right font-medium text-red-600">{(invoice.amount - invoice.paidAmount).toFixed(2)} MAD</TableCell>
+            <TableCell className="text-right">{invoice.amount.toFixed(2)} DH</TableCell>
+            <TableCell className="text-right text-green-600">{invoice.paidAmount.toFixed(2)} DH</TableCell>
+            <TableCell className="text-right font-medium text-red-600">{(invoice.amount - invoice.paidAmount).toFixed(2)} DH</TableCell>
             <TableCell className="text-right">
               {invoice.status !== 'Paid' && (
                 <AddPaymentDialog invoice={invoice} onAddPayment={onAddPayment}>
@@ -164,5 +164,3 @@ export default function BillingTable({ invoices, onAddPayment }: BillingTablePro
     </Table>
   )
 }
-
-    

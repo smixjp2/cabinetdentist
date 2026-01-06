@@ -33,7 +33,7 @@ export async function generateReminderAction(
         const input: PersonalizedReminderInput = {
             ...validatedFields.data,
             dentistName: "Dr. Alaoui",
-            practiceName: "DentiCare Maroc",
+            practiceName: "Ibtisasama Modern Dentistry",
         };
 
         const result = await generatePersonalizedReminder(input);

@@ -35,7 +35,7 @@ export default function SidebarNav() {
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2">
           <Tooth className="w-8 h-8 text-primary" />
-          <span className="font-bold text-lg">DentiCare</span>
+          <span className="font-bold text-lg">Ibtisasama</span>
         </Link>
       </SidebarHeader>
 
