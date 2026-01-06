@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -7,8 +9,9 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { invoices } from "@/lib/data"
 import type { Invoice } from "@/lib/types"
+import { useState } from "react";
+import { invoices as initialInvoices } from "@/lib/data";
 
 const statusVariant: { [key in Invoice['status']]: 'default' | 'secondary' | 'destructive' } = {
   Paid: 'default',
@@ -16,7 +19,11 @@ const statusVariant: { [key in Invoice['status']]: 'default' | 'secondary' | 'de
   Unpaid: 'destructive',
 }
 
-export default function BillingTable() {
+interface BillingTableProps {
+  invoices: Invoice[];
+}
+
+export default function BillingTable({ invoices }: BillingTableProps) {
   return (
     <Table>
       <TableHeader>

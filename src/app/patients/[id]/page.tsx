@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, Edit, FileText, Phone, Mail, Home, History, CalendarIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -20,13 +22,18 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar";
-import { patients } from "@/lib/data";
+import { patients, treatments as initialTreatments, invoices as initialInvoices } from "@/lib/data";
 import DentalChart from "@/components/patients/dental-chart";
 import TreatmentsList from "@/components/patients/treatments-list";
 import BillingTable from "@/components/patients/billing-table";
+import { useState } from "react";
+import type { Invoice, Treatment } from "@/lib/types";
+import NewInvoiceDialog from "@/components/patients/new-invoice-dialog";
 
 export default function PatientDetailPage({ params }: { params: { id: string } }) {
   const patient = patients.find((p) => p.id === params.id);
+  const [treatments, setTreatments] = useState<Treatment[]>(initialTreatments);
+  const [invoices, setInvoices] = useState<Invoice[]>(initialInvoices);
 
   if (!patient) {
     return (
@@ -35,6 +42,15 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
       </div>
     );
   }
+
+  const handleAddInvoice = (newInvoice: Omit<Invoice, 'id' | 'status'>) => {
+    const newInvoiceWithId: Invoice = {
+      ...newInvoice,
+      id: `INV-${(invoices.length + 1).toString().padStart(3, '0')}`,
+      status: 'Unpaid',
+    };
+    setInvoices(prevInvoices => [...prevInvoices, newInvoiceWithId]);
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -63,6 +79,7 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                         </div>
                         <div className="flex gap-2 ml-auto">
                             <Button variant="outline"><Edit className="mr-2 h-4 w-4" /> Modifier</Button>
+                            <NewInvoiceDialog onAddInvoice={handleAddInvoice} />
                             <Button><CalendarIcon className="mr-2 h-4 w-4" /> Nouveau RDV</Button>
                         </div>
                     </CardHeader>
@@ -132,7 +149,7 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                         <Card>
                              <CardHeader><CardTitle>Historique des soins</CardTitle></CardHeader>
                              <CardContent>
-                                <TreatmentsList />
+                                <TreatmentsList treatments={treatments} />
                              </CardContent>
                         </Card>
                     </TabsContent>
@@ -140,7 +157,7 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                         <Card>
                             <CardHeader><CardTitle>Historique de facturation</CardTitle></CardHeader>
                             <CardContent>
-                                <BillingTable />
+                                <BillingTable invoices={invoices} />
                             </CardContent>
                         </Card>
                     </TabsContent>

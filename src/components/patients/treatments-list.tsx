@@ -1,12 +1,18 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { treatments } from "@/lib/data"
+import type { Treatment } from "@/lib/types"
 
-export default function TreatmentsList() {
+interface TreatmentsListProps {
+  treatments: Treatment[];
+}
+
+export default function TreatmentsList({ treatments }: TreatmentsListProps) {
   return (
     <Accordion type="single" collapsible className="w-full">
       {treatments.map((treatment) => (
