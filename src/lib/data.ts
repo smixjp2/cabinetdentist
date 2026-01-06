@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import type { Patient, Appointment, Treatment, Invoice, InventoryItem, TreatmentPlan } from '@/lib/types';
+=======
+import type { Patient, Appointment, Treatment, Invoice, InventoryItem } from '@/lib/types';
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 
 export const patients: Patient[] = [
   {
@@ -105,9 +109,16 @@ export const treatments: Treatment[] = [
 ];
 
 export const invoices: Invoice[] = [
+<<<<<<< HEAD
     { id: 'INV-001', date: '2024-01-15', description: 'Détartrage', amount: 400, paidAmount: 400, status: 'Paid' },
     { id: 'INV-002', date: '2023-09-05', description: 'Couronne (Dent 36) - Acompte', amount: 3500, paidAmount: 1500, status: 'Partial' },
     { id: 'INV-003', date: '2023-09-20', description: 'Soin Carie (Dent 18)', amount: 500, paidAmount: 0, status: 'Unpaid' },
+=======
+    { id: 'INV-001', date: '2024-01-15', description: 'Détartrage', amount: 400, status: 'Paid' },
+    { id: 'INV-002', date: '2023-09-05', description: 'Couronne (Dent 36) - Acompte', amount: 1500, status: 'Partial' },
+    { id: 'INV-003', date: '2023-09-20', description: 'Couronne (Dent 36) - Solde', amount: 2000, status: 'Unpaid' },
+    { id: 'INV-004', date: '2023-11-20', description: 'Soin Carie (Dent 18)', amount: 500, status: 'Paid' },
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 ];
 
 export const inventory: InventoryItem[] = [
@@ -118,6 +129,7 @@ export const inventory: InventoryItem[] = [
     { id: '5', name: 'Fraises dentaires (unité)', stock: 0, maxStock: 200, status: 'Out of Stock' },
     { id: '6', name: 'Ciment verre ionomère', stock: 5, maxStock: 20, status: 'Low Stock' },
 ];
+<<<<<<< HEAD
 
 export const treatmentPlans: TreatmentPlan[] = [
     {
@@ -144,3 +156,5 @@ export const treatmentPlans: TreatmentPlan[] = [
         ],
     },
 ];
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1

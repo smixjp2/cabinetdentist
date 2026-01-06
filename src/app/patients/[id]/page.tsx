@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 "use client";
 
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 import Link from "next/link";
 import { ArrowLeft, Edit, FileText, Phone, Mail, Home, History, CalendarIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +25,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar";
+<<<<<<< HEAD
 import { patients, treatments as initialTreatments, invoices as initialInvoices, treatmentPlans as initialTreatmentPlans } from "@/lib/data";
 import DentalChart from "@/components/patients/dental-chart";
 import TreatmentsList from "@/components/patients/treatments-list";
@@ -37,6 +41,15 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
   const [treatments, setTreatments] = useState<Treatment[]>(initialTreatments);
   const [invoices, setInvoices] = useState<Invoice[]>(initialInvoices);
   const [plans, setPlans] = useState<TreatmentPlan[]>(initialTreatmentPlans);
+=======
+import { patients } from "@/lib/data";
+import DentalChart from "@/components/patients/dental-chart";
+import TreatmentsList from "@/components/patients/treatments-list";
+import BillingTable from "@/components/patients/billing-table";
+
+export default function PatientDetailPage({ params }: { params: { id: string } }) {
+  const patient = patients.find((p) => p.id === params.id);
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 
   if (!patient) {
     return (
@@ -46,6 +59,7 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
     );
   }
 
+<<<<<<< HEAD
   const handleAddInvoice = (newInvoice: Omit<Invoice, 'id' | 'status' | 'paidAmount'>) => {
     const newInvoiceWithId: Invoice = {
       ...newInvoice,
@@ -70,6 +84,8 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
   };
 
 
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
   return (
     <div className="flex flex-col h-full">
         <header className="flex h-16 items-center gap-4 border-b bg-card px-4 md:px-6">
@@ -97,7 +113,10 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                         </div>
                         <div className="flex gap-2 ml-auto">
                             <Button variant="outline"><Edit className="mr-2 h-4 w-4" /> Modifier</Button>
+<<<<<<< HEAD
                             <NewInvoiceDialog onAddInvoice={handleAddInvoice} />
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
                             <Button><CalendarIcon className="mr-2 h-4 w-4" /> Nouveau RDV</Button>
                         </div>
                     </CardHeader>
@@ -118,11 +137,18 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                 </Card>
 
                 <Tabs defaultValue="chart">
+<<<<<<< HEAD
                     <TabsList className="grid w-full grid-cols-5">
                         <TabsTrigger value="info">Infos & Notes</TabsTrigger>
                         <TabsTrigger value="chart">Schéma Dentaire</TabsTrigger>
                         <TabsTrigger value="history">Historique Soins</TabsTrigger>
                         <TabsTrigger value="plans">Plans de traitement</TabsTrigger>
+=======
+                    <TabsList className="grid w-full grid-cols-4">
+                        <TabsTrigger value="info">Infos & Notes</TabsTrigger>
+                        <TabsTrigger value="chart">Schéma Dentaire</TabsTrigger>
+                        <TabsTrigger value="history">Historique Soins</TabsTrigger>
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
                         <TabsTrigger value="billing">Facturation</TabsTrigger>
                     </TabsList>
                     <TabsContent value="info">
@@ -168,6 +194,7 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                         <Card>
                              <CardHeader><CardTitle>Historique des soins</CardTitle></CardHeader>
                              <CardContent>
+<<<<<<< HEAD
                                 <TreatmentsList treatments={treatments} />
                              </CardContent>
                         </Card>
@@ -175,11 +202,21 @@ export default function PatientDetailPage({ params }: { params: { id: string } }
                     <TabsContent value="plans">
                         <TreatmentPlans treatmentPlans={plans} />
                     </TabsContent>
+=======
+                                <TreatmentsList />
+                             </CardContent>
+                        </Card>
+                    </TabsContent>
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
                     <TabsContent value="billing">
                         <Card>
                             <CardHeader><CardTitle>Historique de facturation</CardTitle></CardHeader>
                             <CardContent>
+<<<<<<< HEAD
                                 <BillingTable invoices={invoices} onAddPayment={handleAddPayment} />
+=======
+                                <BillingTable />
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
                             </CardContent>
                         </Card>
                     </TabsContent>

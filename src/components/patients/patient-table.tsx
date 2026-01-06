@@ -39,9 +39,13 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar";
 import type { Patient } from "@/lib/types";
+<<<<<<< HEAD
 import { patients as initialData } from "@/lib/data";
 import NewPatientDialog from "./new-patient-dialog";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+=======
+import { patients as data } from "@/lib/data";
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 
 const columns: ColumnDef<Patient>[] = [
   {
@@ -106,11 +110,15 @@ const columns: ColumnDef<Patient>[] = [
 ];
 
 export function PatientTable() {
+<<<<<<< HEAD
   const [data, setData] = React.useState<Patient[]>(initialData);
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+<<<<<<< HEAD
   const [isNewPatientDialogOpen, setIsNewPatientDialogOpen] = React.useState(false);
 
 
@@ -126,6 +134,8 @@ export function PatientTable() {
     setData(prevData => [...prevData, newPatient]);
     setIsNewPatientDialogOpen(false);
   };
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 
   const table = useReactTable({
     data,
@@ -157,6 +167,7 @@ export function PatientTable() {
           }
           className="max-w-sm"
         />
+<<<<<<< HEAD
         <Dialog open={isNewPatientDialogOpen} onOpenChange={setIsNewPatientDialogOpen}>
           <DialogTrigger asChild>
             <Button className="ml-auto">
@@ -166,6 +177,12 @@ export function PatientTable() {
           </DialogTrigger>
           <NewPatientDialog onAddPatient={handleAddPatient} closeDialog={() => setIsNewPatientDialogOpen(false)}/>
         </Dialog>
+=======
+        <Button className="ml-auto">
+            <PlusCircle className="mr-2 h-4 w-4" />
+            Nouveau patient
+        </Button>
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
       </div>
       <div className="rounded-md border">
         <Table>

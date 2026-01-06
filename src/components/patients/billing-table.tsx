@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 "use client";
 
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 import {
   Table,
   TableBody,
@@ -9,6 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
+<<<<<<< HEAD
 import { Button } from "@/components/ui/button";
 import type { Invoice } from "@/lib/types"
 import { useState } from "react";
@@ -32,12 +36,17 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+=======
+import { invoices } from "@/lib/data"
+import type { Invoice } from "@/lib/types"
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 
 const statusVariant: { [key in Invoice['status']]: 'default' | 'secondary' | 'destructive' } = {
   Paid: 'default',
   Partial: 'secondary',
   Unpaid: 'destructive',
 }
+<<<<<<< HEAD
 const statusText: { [key in Invoice['status']]: string } = {
     Paid: 'Payé',
     Partial: 'Partiel',
@@ -122,17 +131,27 @@ interface BillingTableProps {
 }
 
 export default function BillingTable({ invoices, onAddPayment }: BillingTableProps) {
+=======
+
+export default function BillingTable() {
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>N° Facture</TableHead>
           <TableHead>Date</TableHead>
+<<<<<<< HEAD
           <TableHead>Statut</TableHead>
           <TableHead className="text-right">Total</TableHead>
           <TableHead className="text-right">Payé</TableHead>
           <TableHead className="text-right">Restant</TableHead>
           <TableHead className="w-[50px]"></TableHead>
+=======
+          <TableHead>Description</TableHead>
+          <TableHead>Statut</TableHead>
+          <TableHead className="text-right">Montant</TableHead>
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -140,6 +159,7 @@ export default function BillingTable({ invoices, onAddPayment }: BillingTablePro
           <TableRow key={invoice.id}>
             <TableCell className="font-medium">{invoice.id}</TableCell>
             <TableCell>{invoice.date}</TableCell>
+<<<<<<< HEAD
             <TableCell>
               <Badge variant={statusVariant[invoice.status]}>
                 {statusText[invoice.status]}
@@ -158,6 +178,15 @@ export default function BillingTable({ invoices, onAddPayment }: BillingTablePro
                 </AddPaymentDialog>
               )}
             </TableCell>
+=======
+            <TableCell>{invoice.description}</TableCell>
+            <TableCell>
+              <Badge variant={statusVariant[invoice.status]}>
+                {invoice.status === 'Paid' ? 'Payé' : invoice.status === 'Partial' ? 'Partiel' : 'Impayé'}
+              </Badge>
+            </TableCell>
+            <TableCell className="text-right">{invoice.amount.toFixed(2)} MAD</TableCell>
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
           </TableRow>
         ))}
       </TableBody>

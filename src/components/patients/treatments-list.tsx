@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 "use client";
 
+=======
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+<<<<<<< HEAD
 import type { Treatment } from "@/lib/types"
 
 interface TreatmentsListProps {
@@ -13,6 +17,11 @@ interface TreatmentsListProps {
 }
 
 export default function TreatmentsList({ treatments }: TreatmentsListProps) {
+=======
+import { treatments } from "@/lib/data"
+
+export default function TreatmentsList() {
+>>>>>>> c7add20c10b63cc763c2475a75f05dad6609a9d1
   return (
     <Accordion type="single" collapsible className="w-full">
       {treatments.map((treatment) => (
